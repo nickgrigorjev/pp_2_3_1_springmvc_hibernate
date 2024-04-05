@@ -1,13 +1,12 @@
-package com.nsgrigorjev.springmvchibernate.service;
+package com.nsgrigorjev.service;
 
-import com.nsgrigorjev.springmvchibernate.database.entity.User;
-import com.nsgrigorjev.springmvchibernate.database.repository.UserRepository;
+import com.nsgrigorjev.database.entity.User;
+import com.nsgrigorjev.database.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +14,7 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
 
-    public Optional<User> findById(Long id) {
+    public User findById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -42,5 +41,10 @@ public class UserService {
     @Transactional
     public <S extends User> void update(S entity) {
         userRepository.update(entity);
+    }
+
+    @Transactional
+    public void executeNativeQuery(String sql) {
+        userRepository.executeNativeQuery(sql);
     }
 }

@@ -1,4 +1,4 @@
-package com.nsgrigorjev.springmvchibernate.config;
+package com.nsgrigorjev.config;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -11,7 +11,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class<?>[] {ApplicationConfig.class};
     }
 
 
